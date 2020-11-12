@@ -1,0 +1,54 @@
+<div *ngIf='searchPassenger.ProfileID == null'>
+  <app-home-nav></app-home-nav>
+</div>
+<div *ngIf='searchPassenger.ProfileID'>
+  <app-user-navigation></app-user-navigation>
+</div>
+<div class="card col-md-10 col-lg-10 col-sm-10 col-xl-10" style="margin-top: 0.5%;" >
+    <div class="card-body">
+      <h4 class="card-title">Card Details</h4>
+      <!-- class="was-validated" -->
+      <form >
+        <div class="row">
+        <div class="form-group col-md-6 col-lg-6 col-sm-6 col-xl-6">
+        <label>Enter Card Number:</label>
+          <input type="number" class="form-control" id="uname" placeholder="Enter CardNumber" name="uname" [(ngModel)]='CardNumber' required>
+          <!-- <div class="valid-feedback">Valid.</div>
+          <div class="invalid-feedback">Please fill out this field.</div> -->
+        </div>
+        <div class="form-group col-md-6 col-lg-6 col-sm-6 col-xl-6">
+            <label>Enter Card Type:</label>
+            <input type="text" class="form-control" id="uname" placeholder="Enter CardType" name="uname" [(ngModel)]='CardType' required>
+            <!-- <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div> -->
+          </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-4 col-lg-4 col-sm-4 col-xl-4">
+                <label>Enter Expiry Date:</label>
+                <input type="text" class="form-control" id="uname" placeholder="Enter Expiry Date" name="uname" [(ngModel)]='ExpiryDate' required>
+                <!-- <div class="valid-feedback">Valid.</div>
+                <div class="invalid-feedback">Please fill out this field.</div> -->
+              </div>
+              <div class="form-group col-md-4 col-lg-4 col-sm-4 col-xl-4">
+                <label>Enter Expiry Year:</label>
+                <input type="number" class="form-control" id="uname" placeholder="Enter Expiry Year" name="uname" [(ngModel)]='ExpiryYear'>
+                <!-- <div class="valid-feedback">Valid.</div>
+                <div class="invalid-feedback">Please fill out this field.</div> -->
+              </div>
+              <div class="form-group col-md-4 col-lg-4 col-sm-4 col-xl-4">
+                <label>Enter CVV:</label>
+                <input type="text" class="form-control" id="uname" placeholder="Enter CVV" name="uname" [(ngModel)]='cvv' required>
+                <!-- <div class="valid-feedback">Valid.</div>
+                <div class="invalid-feedback">Please fill out this field.</div> -->
+              </div>
+        </div>
+      </form>
+      <button type="button" class="btn btn-outline-success col-lg-4 col-md-4" (click)="PassengerPayment()" routerLink='/home'>Submit</button>
+    </div>
+  </div>
+
+  <div>
+      
+  </div>
+

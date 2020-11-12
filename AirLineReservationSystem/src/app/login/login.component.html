@@ -1,0 +1,44 @@
+<div *ngIf='search.ProfileID == null'>
+    <app-home-nav></app-home-nav>
+  </div>
+  <div *ngIf='search.ProfileID'>
+    <app-user-navigation></app-user-navigation>
+  </div>
+<div class="container login">
+    <div class="row">
+        <div class="col-md-3 login-left">
+            <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+            <h3 class="h3login">Let's Fly!</h3>
+        </div>
+        <div class="col-md-9 login-right">
+    
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <h3 class="login-heading">Login</h3>
+                    <form #form1="ngForm"  autocomplete="off">
+                    <div class="row login-form">
+                        <div class="col-md-6"> 
+ 
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="email" name="EmailId"  #EmailId="ngModel" [(ngModel)]="serve.FormData.EmailId"  class="form-control" placeholder="Your Email *" value="" />
+                            </div>
+
+                           <div class="form-group">
+                                <input type="password" name="PWD" #PWD="ngModel" [(ngModel)]="this.serve.FormData.PWD" class="form-control" placeholder="Password *" value=""/>
+                            </div>
+                            <p>{{errormsg}}</p>
+                            <a href="#" style="text-decoration: none;">Forgot password?</a>
+                            <div>
+                            <input type="submit" class="btnlogin" (click)="loginfunction(form1)">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

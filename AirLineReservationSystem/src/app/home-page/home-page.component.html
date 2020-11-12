@@ -1,0 +1,180 @@
+<div *ngIf='searchobj.ProfileID == null'>
+  <app-home-nav></app-home-nav>
+</div>
+<div *ngIf='searchobj.ProfileID'>
+  <app-user-navigation></app-user-navigation>
+</div>
+<div class="container-fluid main">
+<img class="bg " [src]="photopath" alt="flight" width="100%" height="50%">
+<h3 class="h3home">Our Airline is More Than Planes | It’s People</h3>
+<div class="container searchflight"> 
+
+  <div class="row">
+    <div class="form-group has-search col-md-3 col-sm-3 col-lg-3 col-xl-3">
+      <span class="fa fa-plane form-control-feedback" style="color: cyan;"></span>
+      <select class="form-control" #sloc required>
+        <option selected disabled hidden>Flight From</option>
+        <option>Bengaluru</option>
+        <option>Delhi</option>
+        <option>Chennai</option>
+        <option>Mumbai</option>
+        <option>Pune</option>
+        <option>Amritsar</option>
+        <option>Hyderabad</option>
+        <option>Kolkata</option>
+        <option>Patna</option>
+        <option>Haridwar</option>
+        <option>Bhubaneshwar</option>
+        <option>Ranchi</option>
+      </select>
+    </div>
+    <div class="form-group has-search col-md-3 col-sm-3 col-lg-3 col-xl-3">
+      <span class="fa fa-map-marker form-control-feedback" style="color: cyan;"></span>
+      <select class="form-control" #dloc required>
+        <option selected disabled hidden>Flight To</option>
+        <option>Bengaluru</option>
+        <option>Delhi</option>
+        <option>Chennai</option>
+        <option>Mumbai</option>
+        <option>Pune</option>
+        <option>Amritsar</option>
+        <option>Hyderabad</option>
+        <option>Kolkata</option>
+        <option>Patna</option>
+        <option>Haridwar</option>
+        <option>Bhubaneshwar</option>
+        <option>Ranchi</option>
+      </select>
+    </div>
+      <div class="form-group has-search col-md-3 col-sm-3 col-lg-3 col-xl-3">
+        <span class="fa fa-calendar form-control-feedback" style="color: cyan;"></span>
+        <input type="date"  class="form-control" placeholder="Departure" [(ngModel)]='jdate' #one>
+      </div>
+        <div class="form-group has-search col-md-4 col-sm-4 col-lg-4 col-xl-4 searchbtn">
+            <button type="button" class="btn col-lg-4 col-md-4" (click)="OnSearch(one,sloc,dloc)" >Search</button>
+        </div>
+    </div>
+
+</div>
+</div>
+<br><br>
+<div class="container section1 justify-content-center">
+<h4>It’s time to fly | Check with Domestic Flights</h4> 
+<p>Fly with a happy face</p>
+    <div class="row">
+    <div class="card img-fluid" style="width:355px">
+    <img class="card-img-top" [src]="cardbng" alt="Card image" style="width:100%">
+    <div class="card-img-overlay">
+      <h4 class="card-title text-white bng">Bangalore</h4>
+    </div>
+  </div>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <div class="card img-fluid" style="width:355px">
+    <img class="card-img-top" [src]="cardchn" alt="Card image" style="width:100%;height: 100%;" >
+    <div class="card-img-overlay">
+      <h4 class="card-title text-white bng">Chennai</h4>
+    </div>
+  </div>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <div class="card img-fluid" style="width:355px">
+    <img class="card-img-top" [src]="carddel" alt="Card image" style="width:100%;height: 100%;">
+    <div class="card-img-overlay">
+      <h4 class="card-title text-white bng">Delhi</h4>
+    </div>
+  </div>
+</div>
+<br>
+<div class="row">
+    <div class="card img-fluid" style="width:550px">
+        <img class="card-img-top" [src]="cardmum" alt="Card image" style="width:100%">
+        <div class="card-img-overlay">
+          <h4 class="card-title text-white bng">Mumbai</h4>
+        </div>
+      </div>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <div class="card img-fluid" style="width:550px">
+        <img class="card-img-top" [src]="cardpune" alt="Card image" style="width:100%;height: 100%;">
+        <div class="card-img-overlay">
+          <h4 class="card-title text-white bng">Pune</h4>
+        </div>
+      </div>
+</div>
+<br>
+<div class="row">
+    <div class="card img-fluid" style="width:355px">
+    <img class="card-img-top" [src]="cardhyd" alt="Card image" style="width:100%">
+    <div class="card-img-overlay">
+      <h4 class="card-title text-white bng">Hyderabad</h4>
+    </div>
+  </div>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <div class="card img-fluid" style="width:355px">
+    <img class="card-img-top" [src]="cardamr" alt="Card image" style="width:100%;height: 100%;" >
+    <div class="card-img-overlay">
+      <h4 class="card-title text-white bng">Amritsar</h4>
+    </div>
+  </div>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <div class="card img-fluid" style="width:355px">
+    <img class="card-img-top" [src]="cardgoa" alt="Card image" style="width:100%;height: 100%;">
+    <div class="card-img-overlay">
+      <h4 class="card-title text-white bng">Goa</h4>
+    </div>
+  </div>
+</div>
+</div>
+<br>
+<br>
+<div class="container-fluid foot">
+<div class="container justify-content-center">
+    <br>
+    <br>
+    <footer>
+        <div class="row">
+            <div class="col-md-4 col-lg-4 col-xl-4 col-sm-4">
+                <p style="text-align: left;"><strong>About Airways</strong> <br><br>
+                   Airways is the world's largest <br>
+                   online air ticket booking service <br>
+                   trusted by over 17 million <br>
+                   happy customers globally.<br>
+                   Airways offers air ticket <br>
+                   booking through its website.<br>
+                </p>
+            </div>
+            <div class="col-md-4 col-lg-4 col-xl-4 col-sm-4">
+                <p style="text-align: left;"><strong>Information</strong> <br><br>
+                    <a class="footbtn" href="#">About US</a><br><br>
+                    <a class="footbtn" href="#">Contact</a><br><br>
+                    <a class="footbtn" href="#">Privacy Policy</a><br><br>
+                    <a class="footbtn" href="#">Booking Conditions</a><br><br>
+                    <a class="footbtn" href="#">Refund Policy</a><br><br>
+                </p>
+            </div>
+            <div class="col-md-4 col-lg-4 col-xl-4 col-sm-4">
+                <p style="text-align: left;"><strong>Have a Query</strong> <br><br>
+                    <a class="footbtn" href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;&nbsp;
+                        manjunath@airways.com</a><br><br>
+
+                    <a class="footbtn" href="#"><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;&nbsp;
+                    +91 7702011889</a><br><br>
+                </p>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="icons">
+            <i class="fa fa-instagram fa-2x icon" aria-hidden="true"></i>
+            <i class="fa fa-facebook-square fa-2x icon" aria-hidden="true"></i>
+            <i class="fa fa-twitter fa-2x icon" aria-hidden="true"></i>
+            <i class="fa fa-youtube-play fa-2x icon" aria-hidden="true"></i>
+            <i class="fa fa-pinterest-square fa-2x icon" aria-hidden="true"></i>
+        </div>
+        <br>
+        <div class="copyrigt" style="text-align: center;">
+            Copyright &copy; 2020 All rights reserved | This template is made by our Team
+        </div>
+        <br>
+        <br>
+    </footer>
+</div>
+</div>

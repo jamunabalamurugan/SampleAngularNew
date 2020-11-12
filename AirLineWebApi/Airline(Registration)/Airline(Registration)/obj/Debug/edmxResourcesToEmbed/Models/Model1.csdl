@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AirlineReservationSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Registration">
+    <Key>
+      <PropertyRef Name="ProfileId" />
+    </Key>
+    <Property Name="ProfileId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EmailId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PWD" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="securityquestion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SecurityAns" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Age" Type="Int32" />
+    <NavigationProperty Name="TicketInfoes" Relationship="AirlineReservationSystemModel.FK_ProfileId2" FromRole="Registration" ToRole="TicketInfo" />
+    <NavigationProperty Name="CardDetails" Relationship="AirlineReservationSystemModel.FK_ProfileId" FromRole="Registration" ToRole="CardDetail" />
+  </EntityType>
+  <EntityContainer Name="AirlineReservationSystemEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Registrations" EntityType="Self.Registration" />
+    <FunctionImport Name="spFlightSearch" ReturnType="Collection(AirlineReservationSystemModel.spFlightSearch_Result)">
+      <Parameter Name="Jdate" Mode="In" Type="DateTime" />
+      <Parameter Name="Sloc" Mode="In" Type="String" />
+      <Parameter Name="Dloc" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="FlightSearchNew" ReturnType="Collection(AirlineReservationSystemModel.FlightSearchNew_Result)">
+      <Parameter Name="Jdate" Mode="In" Type="DateTime" />
+      <Parameter Name="Sloc" Mode="In" Type="String" />
+      <Parameter Name="Dloc" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="FlightSearchFinal" ReturnType="Collection(AirlineReservationSystemModel.FlightSearchFinal_Result)">
+      <Parameter Name="Jdate" Mode="In" Type="DateTime" />
+      <Parameter Name="Sloc" Mode="In" Type="String" />
+      <Parameter Name="Dloc" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="FinalFlightSearch" ReturnType="Collection(AirlineReservationSystemModel.FinalFlightSearch_Result)">
+      <Parameter Name="Jdate" Mode="In" Type="DateTime" />
+      <Parameter Name="Sloc" Mode="In" Type="String" />
+      <Parameter Name="Dloc" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="TicketInfoes" EntityType="AirlineReservationSystemModel.TicketInfo" />
+    <AssociationSet Name="FK_ProfileId2" Association="AirlineReservationSystemModel.FK_ProfileId2">
+      <End Role="Registration" EntitySet="Registrations" />
+      <End Role="TicketInfo" EntitySet="TicketInfoes" />
+    </AssociationSet>
+    <FunctionImport Name="InsertTickets">
+      <Parameter Name="pid" Mode="In" Type="Int32" />
+      <Parameter Name="fnum" Mode="In" Type="Int32" />
+      <Parameter Name="pname" Mode="In" Type="String" />
+      <Parameter Name="cid" Mode="In" Type="Int32" />
+      <Parameter Name="pAge" Mode="In" Type="Int32" />
+      <Parameter Name="sno" Mode="In" Type="Int32" />
+      <Parameter Name="nooftickets" Mode="In" Type="Int32" />
+      <Parameter Name="amt" Mode="In" Type="Int32" />
+      <Parameter Name="gen" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="InsertTicketDetail">
+      <Parameter Name="pid" Mode="In" Type="Int32" />
+      <Parameter Name="fnum" Mode="In" Type="Int32" />
+      <Parameter Name="pname" Mode="In" Type="String" />
+      <Parameter Name="cid" Mode="In" Type="Int32" />
+      <Parameter Name="pAge" Mode="In" Type="Int32" />
+      <Parameter Name="sno" Mode="In" Type="Int32" />
+      <Parameter Name="nooftickets" Mode="In" Type="Int32" />
+      <Parameter Name="amt" Mode="In" Type="Int32" />
+      <Parameter Name="gen" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="InsertTicketInformation">
+      <Parameter Name="pid" Mode="In" Type="Int32" />
+      <Parameter Name="fnum" Mode="In" Type="Int32" />
+      <Parameter Name="pname" Mode="In" Type="String" />
+      <Parameter Name="cid" Mode="In" Type="Int32" />
+      <Parameter Name="pAge" Mode="In" Type="Int32" />
+      <Parameter Name="sno" Mode="In" Type="Int32" />
+      <Parameter Name="nooftickets" Mode="In" Type="Int32" />
+      <Parameter Name="amt" Mode="In" Type="Int32" />
+      <Parameter Name="gen" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="InsertDetailsTicket">
+      <Parameter Name="pid" Mode="In" Type="Int32" />
+      <Parameter Name="fnum" Mode="In" Type="Int32" />
+      <Parameter Name="pname" Mode="In" Type="String" />
+      <Parameter Name="cid" Mode="In" Type="Int32" />
+      <Parameter Name="pAge" Mode="In" Type="Int32" />
+      <Parameter Name="sno" Mode="In" Type="Int32" />
+      <Parameter Name="nooftickets" Mode="In" Type="Int32" />
+      <Parameter Name="amt" Mode="In" Type="Int32" />
+      <Parameter Name="gen" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="InsertTicketInformation1">
+      <Parameter Name="pid" Mode="In" Type="Int32" />
+      <Parameter Name="fnum" Mode="In" Type="Int32" />
+      <Parameter Name="pname" Mode="In" Type="String" />
+      <Parameter Name="cid" Mode="In" Type="Int32" />
+      <Parameter Name="pAge" Mode="In" Type="Int32" />
+      <Parameter Name="sno" Mode="In" Type="Int32" />
+      <Parameter Name="nooftickets" Mode="In" Type="Int32" />
+      <Parameter Name="amt" Mode="In" Type="Int32" />
+      <Parameter Name="gen" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="PostInsert">
+      <Parameter Name="pid" Mode="In" Type="Int32" />
+      <Parameter Name="fnum" Mode="In" Type="Int32" />
+      <Parameter Name="pname" Mode="In" Type="String" />
+      <Parameter Name="cid" Mode="In" Type="Int32" />
+      <Parameter Name="pAge" Mode="In" Type="Int32" />
+      <Parameter Name="sno" Mode="In" Type="Int32" />
+      <Parameter Name="nooftickets" Mode="In" Type="Int32" />
+      <Parameter Name="amt" Mode="In" Type="Int32" />
+      <Parameter Name="gen" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="InsertUserTicket">
+      <Parameter Name="pid" Mode="In" Type="Int32" />
+      <Parameter Name="fnum" Mode="In" Type="Int32" />
+      <Parameter Name="pname" Mode="In" Type="String" />
+      <Parameter Name="cid" Mode="In" Type="Int32" />
+      <Parameter Name="pAge" Mode="In" Type="Int32" />
+      <Parameter Name="sno" Mode="In" Type="Int32" />
+      <Parameter Name="nooftickets" Mode="In" Type="Int32" />
+      <Parameter Name="amt" Mode="In" Type="Int32" />
+      <Parameter Name="gen" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="CardDetails" EntityType="AirlineReservationSystemModel.CardDetail" />
+    <AssociationSet Name="FK_ProfileId" Association="AirlineReservationSystemModel.FK_ProfileId">
+      <End Role="Registration" EntitySet="Registrations" />
+      <End Role="CardDetail" EntitySet="CardDetails" />
+    </AssociationSet>
+    <FunctionImport Name="Payment" ReturnType="Collection(AirlineReservationSystemModel.Payment_Result)">
+      <Parameter Name="pid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Search" ReturnType="Collection(AirlineReservationSystemModel.Search_Result)">
+      <Parameter Name="Jdate" Mode="In" Type="DateTime" />
+      <Parameter Name="Sloc" Mode="In" Type="String" />
+      <Parameter Name="Dloc" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Tickets" ReturnType="Collection(AirlineReservationSystemModel.Tickets_Result)">
+      <Parameter Name="pid" Mode="In" Type="Int32" />
+      <Parameter Name="pname" Mode="In" Type="String" />
+      <Parameter Name="age" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DisplayTicket" ReturnType="Collection(AirlineReservationSystemModel.DisplayTicket_Result)">
+      <Parameter Name="pid" Mode="In" Type="Int32" />
+      <Parameter Name="age" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Seats" ReturnType="Collection(AirlineReservationSystemModel.Seats_Result)">
+      <Parameter Name="fnum" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SeatsAvailable" ReturnType="Collection(AirlineReservationSystemModel.SeatsAvailable_Result)">
+      <Parameter Name="fnumber" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="spFlightSearch_Result">
+    <Property Type="DateTime" Name="Column1" Nullable="true" />
+    <Property Type="Int32" Name="FlightNumber" Nullable="false" />
+    <Property Type="String" Name="SourceLocation" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="DestinationLocation" Nullable="false" MaxLength="20" />
+    <Property Type="DateTime" Name="DepartureTime" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="SeatAvailablePerClass" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="FlightSearchNew_Result">
+    <Property Type="DateTime" Name="Column1" Nullable="true" />
+    <Property Type="Int32" Name="FlightNumber" Nullable="false" />
+    <Property Type="String" Name="SourceLocation" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="DestinationLocation" Nullable="false" MaxLength="20" />
+    <Property Type="DateTime" Name="DepartureTime" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="SeatAvailablePerClass" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="FlightSearchFinal_Result">
+    <Property Type="DateTime" Name="JourneyDate" Nullable="false" />
+    <Property Type="Int32" Name="FlightNumber" Nullable="false" />
+    <Property Type="String" Name="SourceLocation" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="DestinationLocation" Nullable="false" MaxLength="20" />
+    <Property Type="DateTime" Name="DepartureTime" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="SeatAvailablePerClass" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="FinalFlightSearch_Result">
+    <Property Type="DateTime" Name="JourneyDate" Nullable="false" />
+    <Property Type="Int32" Name="FlightNumber" Nullable="false" />
+    <Property Type="String" Name="SourceLocation" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="DestinationLocation" Nullable="false" MaxLength="20" />
+    <Property Type="DateTime" Name="DepartureTime" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="SeatAvailablePerClass" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="TicketInfo">
+    <Key>
+      <PropertyRef Name="Ticketid" />
+    </Key>
+    <Property Name="ProfileId" Type="Int32" Nullable="false" />
+    <Property Name="FlightNumber" Type="Int32" Nullable="false" />
+    <Property Name="PassengerName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ClassId" Type="Int32" Nullable="false" />
+    <Property Name="PassengerAge" Type="Int32" Nullable="false" />
+    <Property Name="SeatNumber" Type="Int32" Nullable="false" />
+    <Property Name="Ticketid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nooftickets" Type="Int32" Nullable="false" />
+    <Property Name="amount" Type="Int32" Nullable="false" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Registration" Relationship="AirlineReservationSystemModel.FK_ProfileId2" FromRole="TicketInfo" ToRole="Registration" />
+  </EntityType>
+  <Association Name="FK_ProfileId2">
+    <End Type="AirlineReservationSystemModel.Registration" Role="Registration" Multiplicity="1" />
+    <End Type="AirlineReservationSystemModel.TicketInfo" Role="TicketInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Registration">
+        <PropertyRef Name="ProfileId" />
+      </Principal>
+      <Dependent Role="TicketInfo">
+        <PropertyRef Name="ProfileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="CardDetail">
+    <Key>
+      <PropertyRef Name="CardNumber" />
+    </Key>
+    <Property Name="CardNumber" Type="Int64" Nullable="false" />
+    <Property Name="ProfileId" Type="Int32" Nullable="false" />
+    <Property Name="CardType" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="ExpiryDate" Type="Int32" Nullable="false" />
+    <Property Name="ExpiryYear" Type="Int32" Nullable="false" />
+    <Property Name="cvv" Type="Int32" />
+    <NavigationProperty Name="Registration" Relationship="AirlineReservationSystemModel.FK_ProfileId" FromRole="CardDetail" ToRole="Registration" />
+  </EntityType>
+  <Association Name="FK_ProfileId">
+    <End Type="AirlineReservationSystemModel.Registration" Role="Registration" Multiplicity="1" />
+    <End Type="AirlineReservationSystemModel.CardDetail" Role="CardDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Registration">
+        <PropertyRef Name="ProfileId" />
+      </Principal>
+      <Dependent Role="CardDetail">
+        <PropertyRef Name="ProfileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="Payment_Result">
+    <Property Type="Int64" Name="CardNumber" Nullable="false" />
+    <Property Type="String" Name="CardType" Nullable="false" MaxLength="10" />
+    <Property Type="Int32" Name="ExpiryDate" Nullable="false" />
+    <Property Type="Int32" Name="ExpiryYear" Nullable="false" />
+    <Property Type="Int32" Name="cvv" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Search_Result">
+    <Property Type="DateTime" Name="JourneyDate" Nullable="false" />
+    <Property Type="Int32" Name="FlightNumber" Nullable="false" />
+    <Property Type="String" Name="SourceLocation" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="DestinationLocation" Nullable="false" MaxLength="20" />
+    <Property Type="DateTime" Name="DepartureTime" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="SeatAvailablePerClass" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Tickets_Result">
+    <Property Type="Int32" Name="ProfileId" Nullable="false" />
+    <Property Type="Int32" Name="FlightNumber" Nullable="false" />
+    <Property Type="String" Name="PassengerName" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="ClassId" Nullable="false" />
+    <Property Type="Int32" Name="PassengerAge" Nullable="false" />
+    <Property Type="Int32" Name="SeatNumber" Nullable="false" />
+    <Property Type="Int32" Name="Ticketid" Nullable="false" />
+    <Property Type="Int32" Name="nooftickets" Nullable="false" />
+    <Property Type="Int32" Name="amount" Nullable="false" />
+    <Property Type="String" Name="Gender" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="DisplayTicket_Result">
+    <Property Type="Int32" Name="ProfileId" Nullable="false" />
+    <Property Type="Int32" Name="FlightNumber" Nullable="false" />
+    <Property Type="String" Name="PassengerName" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="ClassId" Nullable="false" />
+    <Property Type="Int32" Name="PassengerAge" Nullable="false" />
+    <Property Type="Int32" Name="SeatNumber" Nullable="false" />
+    <Property Type="Int32" Name="Ticketid" Nullable="false" />
+    <Property Type="Int32" Name="nooftickets" Nullable="false" />
+    <Property Type="Int32" Name="amount" Nullable="false" />
+    <Property Type="String" Name="Gender" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="Seats_Result">
+    <Property Type="Int32" Name="SeatAvailablePerClass" Nullable="false" />
+    <Property Type="Decimal" Name="DestPrice" Nullable="false" Precision="19" />
+    <Property Type="Int32" Name="ClassId" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="SeatsAvailable_Result">
+    <Property Type="Decimal" Name="dest" Nullable="false" Precision="19" />
+    <Property Type="Int32" Name="idc" Nullable="false" />
+    <Property Type="Int32" Name="seats" Nullable="false" />
+  </ComplexType>
+</Schema>

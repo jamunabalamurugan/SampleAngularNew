@@ -1,0 +1,84 @@
+<div *ngIf='priceobj.ProfileID == null'>
+  <app-home-nav></app-home-nav>
+</div>
+<div *ngIf='priceobj.ProfileID'>
+  <app-user-navigation></app-user-navigation>
+</div>
+
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+    
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h6 class="modal-title">Status</h6>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      
+      <!-- Modal body -->
+      <div class="modal-body">
+        Booking Confirmed
+      </div>
+      
+      <!-- Modal footer -->
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div> -->
+      
+    </div>
+  </div>
+</div>
+<img class="bg " [src]="photopath" alt="flight" width="100%" height="100%">
+<div class="container ticketdetail" >
+    <!-- <div class="card" style="margin-top: 0.5%;">
+        <div class="card-body">
+            <h4 class="card-title">Booking Confirmed</h4>
+        </div>
+      </div>  -->
+
+      
+      <div class="card boardingpass">
+        <div class="card-body">
+            <h4 class="card-title">Boarding Pass</h4>
+          <div class=" row mr-auto">
+              <div class="col-md-4 col-sm-4 col-xl-4 col-lg-4">
+                <strong style="font-weight: bolder;">Passenger Name:</strong><br>
+                <span>{{priceobj.FormBook.PassengerName}}</span>
+               </div>
+               <div class="col-md-4 col-sm-4 col-xl-4 col-lg-4">
+                <strong style="font-weight: bolder;">Class Type:</strong><br>
+                <span>{{priceobj.tclass}}</span>
+               </div>
+               <div class="col-md-4 col-sm-4 col-xl-4 col-lg-4">
+                <strong style="font-weight: bolder;">Flight Number:</strong><br>
+                <span>{{priceobj.fnum}}</span>
+               </div>
+          </div>
+          <br>
+          <div class=" row mr-auto">
+            <div class="col-md-4 col-sm-4 col-xl-4 col-lg-4">
+              <strong style="font-weight: bolder;">From:</strong>
+              <span>{{priceobj.SourceLocation}}</span><br>
+              <strong style="font-weight: bolder;">To:</strong>
+              <span>{{priceobj.DestinationLocation}}</span>
+             </div>
+             <div class="col-md-4 col-sm-4 col-xl-4 col-lg-4">
+              <strong style="font-weight: bolder;">Date:</strong><br>
+              <span>{{priceobj.DateofJourney}}</span>
+             </div>
+             <div class="col-md-4 col-sm-4 col-xl-4 col-lg-4">
+              <strong style="font-weight: bolder;">seat Number:</strong><br>
+              <span>{{priceobj.FormBook.SeatNumber}}</span>
+             </div>
+            </div>
+        </div>
+        
+      </div><br><br>
+      <div>
+      <button class="btn btn-outline-dark col-lg-2 col-md-2" data-toggle="modal" data-target="#myModal">Check Status</button>&nbsp;&nbsp;
+      <button class="btn btn-outline-dark col-lg-2 col-md-2" (click)="Print()">Print Ticket</button>
+    </div>
+      
+    </div>
+    
+    {{price|json}}

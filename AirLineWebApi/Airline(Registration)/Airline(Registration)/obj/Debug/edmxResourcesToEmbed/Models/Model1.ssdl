@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AirlineReservationSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CardDetails">
+    <Key>
+      <PropertyRef Name="CardNumber" />
+    </Key>
+    <Property Name="CardNumber" Type="bigint" Nullable="false" />
+    <Property Name="ProfileId" Type="int" Nullable="false" />
+    <Property Name="CardType" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="ExpiryDate" Type="int" Nullable="false" />
+    <Property Name="ExpiryYear" Type="int" Nullable="false" />
+    <Property Name="cvv" Type="int" />
+  </EntityType>
+  <EntityType Name="Registration">
+    <Key>
+      <PropertyRef Name="ProfileId" />
+    </Key>
+    <Property Name="ProfileId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="4" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="EmailId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PWD" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="securityquestion" Type="varchar" MaxLength="50" />
+    <Property Name="SecurityAns" Type="varchar(max)" />
+    <Property Name="Age" Type="int" />
+  </EntityType>
+  <EntityType Name="TicketInfo">
+    <Key>
+      <PropertyRef Name="Ticketid" />
+    </Key>
+    <Property Name="ProfileId" Type="int" Nullable="false" />
+    <Property Name="FlightNumber" Type="int" Nullable="false" />
+    <Property Name="PassengerName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ClassId" Type="int" Nullable="false" />
+    <Property Name="PassengerAge" Type="int" Nullable="false" />
+    <Property Name="SeatNumber" Type="int" Nullable="false" />
+    <Property Name="Ticketid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nooftickets" Type="int" Nullable="false" />
+    <Property Name="amount" Type="int" Nullable="false" />
+    <Property Name="Gender" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <Association Name="FK_ProfileId">
+    <End Role="Registration" Type="Self.Registration" Multiplicity="1" />
+    <End Role="CardDetails" Type="Self.CardDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Registration">
+        <PropertyRef Name="ProfileId" />
+      </Principal>
+      <Dependent Role="CardDetails">
+        <PropertyRef Name="ProfileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProfileId2">
+    <End Role="Registration" Type="Self.Registration" Multiplicity="1" />
+    <End Role="TicketInfo" Type="Self.TicketInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Registration">
+        <PropertyRef Name="ProfileId" />
+      </Principal>
+      <Dependent Role="TicketInfo">
+        <PropertyRef Name="ProfileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="DisplayTicket" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pid" Type="int" Mode="In" />
+    <Parameter Name="age" Type="int" Mode="In" />
+  </Function>
+  <Function Name="FinalFlightSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Jdate" Type="date" Mode="In" />
+    <Parameter Name="Sloc" Type="varchar" Mode="In" />
+    <Parameter Name="Dloc" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="FlightSearchFinal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Jdate" Type="date" Mode="In" />
+    <Parameter Name="Sloc" Type="varchar" Mode="In" />
+    <Parameter Name="Dloc" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="FlightSearchNew" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Jdate" Type="date" Mode="In" />
+    <Parameter Name="Sloc" Type="varchar" Mode="In" />
+    <Parameter Name="Dloc" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="InsertDetailsTicket" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pid" Type="int" Mode="In" />
+    <Parameter Name="fnum" Type="int" Mode="In" />
+    <Parameter Name="pname" Type="varchar" Mode="In" />
+    <Parameter Name="cid" Type="int" Mode="In" />
+    <Parameter Name="pAge" Type="int" Mode="In" />
+    <Parameter Name="sno" Type="int" Mode="In" />
+    <Parameter Name="nooftickets" Type="int" Mode="In" />
+    <Parameter Name="amt" Type="int" Mode="In" />
+    <Parameter Name="gen" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="InsertTicketDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pid" Type="int" Mode="In" />
+    <Parameter Name="fnum" Type="int" Mode="In" />
+    <Parameter Name="pname" Type="varchar" Mode="In" />
+    <Parameter Name="cid" Type="int" Mode="In" />
+    <Parameter Name="pAge" Type="int" Mode="In" />
+    <Parameter Name="sno" Type="int" Mode="In" />
+    <Parameter Name="nooftickets" Type="int" Mode="In" />
+    <Parameter Name="amt" Type="int" Mode="In" />
+    <Parameter Name="gen" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="InsertTicketInformation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pid" Type="int" Mode="In" />
+    <Parameter Name="fnum" Type="int" Mode="In" />
+    <Parameter Name="pname" Type="varchar" Mode="In" />
+    <Parameter Name="cid" Type="int" Mode="In" />
+    <Parameter Name="pAge" Type="int" Mode="In" />
+    <Parameter Name="sno" Type="int" Mode="In" />
+    <Parameter Name="nooftickets" Type="int" Mode="In" />
+    <Parameter Name="amt" Type="int" Mode="In" />
+    <Parameter Name="gen" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="InsertTickets" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pid" Type="int" Mode="In" />
+    <Parameter Name="fnum" Type="int" Mode="In" />
+    <Parameter Name="pname" Type="varchar" Mode="In" />
+    <Parameter Name="cid" Type="int" Mode="In" />
+    <Parameter Name="pAge" Type="int" Mode="In" />
+    <Parameter Name="sno" Type="int" Mode="In" />
+    <Parameter Name="nooftickets" Type="int" Mode="In" />
+    <Parameter Name="amt" Type="int" Mode="In" />
+    <Parameter Name="gen" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="InsertUserTicket" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pid" Type="int" Mode="In" />
+    <Parameter Name="fnum" Type="int" Mode="In" />
+    <Parameter Name="pname" Type="varchar" Mode="In" />
+    <Parameter Name="cid" Type="int" Mode="In" />
+    <Parameter Name="pAge" Type="int" Mode="In" />
+    <Parameter Name="sno" Type="int" Mode="In" />
+    <Parameter Name="nooftickets" Type="int" Mode="In" />
+    <Parameter Name="amt" Type="int" Mode="In" />
+    <Parameter Name="gen" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Payment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Jdate" Type="date" Mode="In" />
+    <Parameter Name="Sloc" Type="varchar" Mode="In" />
+    <Parameter Name="Dloc" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Seats" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fnum" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SeatsAvailable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fnumber" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spFlightSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Jdate" Type="date" Mode="In" />
+    <Parameter Name="Sloc" Type="varchar" Mode="In" />
+    <Parameter Name="Dloc" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Tickets" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pid" Type="int" Mode="In" />
+    <Parameter Name="pname" Type="varchar" Mode="In" />
+    <Parameter Name="age" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="AirlineReservationSystemModelStoreContainer">
+    <EntitySet Name="CardDetails" EntityType="Self.CardDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Registration" EntityType="Self.Registration" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TicketInfo" EntityType="Self.TicketInfo" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_ProfileId" Association="Self.FK_ProfileId">
+      <End Role="Registration" EntitySet="Registration" />
+      <End Role="CardDetails" EntitySet="CardDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProfileId2" Association="Self.FK_ProfileId2">
+      <End Role="Registration" EntitySet="Registration" />
+      <End Role="TicketInfo" EntitySet="TicketInfo" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

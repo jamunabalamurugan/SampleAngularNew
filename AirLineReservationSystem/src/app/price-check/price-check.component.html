@@ -1,0 +1,37 @@
+<div *ngIf='priceobj.ProfileID == null'>
+    <app-home-nav></app-home-nav>
+  </div>
+  <div *ngIf='priceobj.ProfileID'>
+    <app-user-navigation></app-user-navigation>
+  </div>
+<img class="bg " [src]="photopath" alt="flight" width="100%" height="100%">
+<div class="container varpricecheck" >
+    <div class="card">
+        <div class="card-body ">
+          <h4 class="card-title">Passenger Details</h4>
+            <table class="table table-hover table-responsive card-text col-md-12 col-sm-10 col-xl-12 col-lg-12">
+                <tr>
+                    <th>FlightNumber</th>
+                    <th>PassengerName</th>
+                    <th>Source</th>
+                    <th>Destination</th>
+                    <!-- <th>ClassType</th> -->
+                    <th>Amount</th>
+                </tr>
+                <tr>
+                    <td>{{priceobj.fnum}}</td>
+                    <td>{{priceobj.FormBook.PassengerName}}</td>
+                    <td>{{priceobj.SourceLocation}}</td>
+                    <td>{{priceobj.DestinationLocation}}</td>
+                    <!-- <td>{{priceobj.TypeClass}}</td> -->
+                    <td>{{priceobj.FormBook.amount}}</td>
+                    
+                </tr>
+            </table>
+            <button type="button" class="btn btn-outline-success col-lg-2 col-md-2" (click)="PriceCheck()" >Continue to Book</button>
+            <!-- routerLink='/home' -->
+        </div>
+      </div>
+    </div>
+    
+    {{price|json}}

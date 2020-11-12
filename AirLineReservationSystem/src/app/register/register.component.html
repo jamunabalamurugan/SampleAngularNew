@@ -1,0 +1,78 @@
+<div *ngIf='search.ProfileID == null'>
+    <app-home-nav></app-home-nav>
+  </div>
+  <div *ngIf='search.ProfileID'>
+    <app-user-navigation></app-user-navigation>
+  </div>
+
+<div class="container register">
+    <div class="row">
+        <div class="col-md-3 register-left">
+            <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+            <h3 class="h3reg">Welcome</h3>
+        </div>
+        <div class="col-md-9 register-right">
+    
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <h3 class="register-heading">Registration</h3>
+                    <form #form="ngForm"  autocomplete="off">
+                    <div class="row register-form" >
+                        <div class="col-md-6">
+                          
+                        <div class="form-group">
+                            <input type="text"  name="Title" #Title="ngModel" [(ngModel)]="this.serve.FormData.Title" minlength="2" maxlength="4" class="form-control" placeholder="Title" >
+                            
+                        </div>
+                            <div class="form-group">
+                                <input type="text" name="FirstName" #FirstName="ngModel" [(ngModel)]="this.serve.FormData.FirstName"  class="form-control" placeholder="First Name" >
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="LastName" #LastName="ngModel" [(ngModel)]="this.serve.FormData.LastName" class="form-control" placeholder="Last Name" >
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="PWD" #PWD="ngModel" [(ngModel)]="this.serve.FormData.PWD" class="form-control" placeholder="Password">
+                            </div>
+                            <!-- <div class="form-group">
+                                <input type="password" name="PWD" #PWD="ngModel" [(ngModel)]="this.serve.FormData.PWD" class="form-control"  placeholder="Confirm Password *" value="" />
+                            </div> -->
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="email" validate-email name="EmailId" #EmailId="ngModel" [(ngModel)]="serve.FormData.EmailId" class="form-control" placeholder="Your Email *" value="" />
+            
+                            </div>
+                            <div class="form-group">
+                                <input type="number" name="PhoneNumber" #PhoneNumber="ngModel" [(ngModel)]="serve.FormData.PhoneNumber" minlength="10" maxlength="10"  class="form-control" placeholder="Your Phone *" value="" />
+                            </div>
+                            <div class="form-group" >
+                                <select class="form-control" name="securityquestion" #securityquestion="ngModel" [(ngModel)]="serve.FormData.securityquestion" >
+                                    <option class="hidden"  selected disabled>Please select your Security Question</option>
+                                    <option>Who is your childhood hero?</option>
+                                    <option>What is Your old Phone Number</option>
+                                    <option>What is your Pet Name?</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name ="SecurityAns" #SecurityAns="ngModel" [(ngModel)]="serve.FormData.SecurityAns" class="form-control" placeholder="Enter Your Answer *" />
+                            </div>
+                            <div class="form-group">
+                                <input type="number" name="Age" #Age="ngModel" [(ngModel)]="serve.FormData.Age" class="form-control"  placeholder="Age" />
+                            </div>
+                            <input type="submit" class="btnRegister" (click)="Register(this.serve.FormData.Title,this.serve.FormData.FirstName,this.serve.FormData.LastName,
+                            this.serve.FormData.PWD,serve.FormData.EmailId,serve.FormData.PhoneNumber,serve.FormData.securityquestion,serve.FormData.SecurityAns,serve.FormData.Age,form)"  value="Register">
+                        </div>
+                    </div>
+                  
+                </form>
+
+            </div>
+           
+        </div>
+    </div>
+</div>
+
+</div>
+
+{{this.reg|json}} 

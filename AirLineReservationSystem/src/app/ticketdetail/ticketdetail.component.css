@@ -1,0 +1,11 @@
+
+.boardingpass{
+    margin-top: 0.5%;
+    background: -webkit-linear-gradient(top,#22c1c3,#fdbb2d);
+}
+.ticketdetail{
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    position: absolute;
+}

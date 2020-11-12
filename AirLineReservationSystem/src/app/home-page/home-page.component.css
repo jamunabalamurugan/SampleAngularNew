@@ -1,0 +1,147 @@
+.main{
+    margin: 0;
+    padding: 0;
+}
+.main h3{
+    top:25%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    position: absolute;
+    /* text-decoration-color: linear-gradient(#e66465, #9198e5); */
+}
+.main .btn-1{
+    border: solid 1px black;
+    border-radius: 10px;
+    outline:none;
+}
+.main .btn-1:hover{
+    background-color: rgb(96, 96, 221);
+}
+.main .btn-1:focus{
+    transform: scaleY(0.9);
+}
+.main .btn-2{
+    border: solid 1px black;
+    border-radius: 10px;
+    outline:none;
+}
+.main .btn-2:hover{
+    background-color: rgb(96, 96, 221);
+}
+.main .btn-2:focus{
+    transform: scaleY(0.9);
+}
+.main .has-search .form-control {
+    padding-left: 2.375rem;
+}
+
+.main .has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
+.main .searchflight{
+    top:50%;
+    left:60%;
+    transform: translate(-50%,-50%);
+    position: absolute;
+    
+}
+.main .form-control placeholder{
+    font-weight: bolder;
+}
+h4,p{
+    text-align: center;
+}
+.card:hover{
+    opacity: 0.8;
+}
+.foot {
+    color:white;
+    background-color: rgba(4, 3, 27, 0.808);
+}
+.footbtn{
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    margin: 0 auto;
+}
+.footbtn:hover,.icon:hover{
+    color:cyan;
+}
+.icons{
+    text-align: center;
+    margin: 0 auto;
+    text-decoration: none;
+}
+.icon{
+    padding-left: 2%;
+    cursor: pointer;
+}
+
+.h3home{
+    position:relative;
+    animation-name: login;
+    animation-duration: 3s;  
+    animation-fill-mode: forwards;
+}
+@keyframes login {
+    from {left: -100%;}
+    to {left:50%;}
+}
+
+.searchflight{
+    position: relative;
+    animation-name: searching;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+}
+@keyframes searching{
+    from {bottom:-100%}
+    to {bottom:20%}
+}
+.section1 h4{
+    position: relative;
+    animation-name: quotes;
+    animation-duration: 2s;
+    animation-fill-mode: both;
+}
+@keyframes quotes{
+    from{top: 0%}
+    to{top:40%}
+}
+.card:hover{
+    transform: scale(1.0111);
+}
+
+#myInput {
+    box-sizing: border-box;
+    background-position: 14px 12px;
+    background-repeat: no-repeat;
+    font-size: 16px;
+    padding: 14px 20px 12px 45px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .btn{
+      color:white;
+      border-color: white;
+  }
+  .btn:hover{
+      color:white;
+      border-color: cyan;
+      background-color:#00ccff;
+  }
+  
+  /* The search field when it gets focus/clicked on */
+  #myInput:focus {outline: 3px solid #ddd;}
+
+  .show {display:block;}

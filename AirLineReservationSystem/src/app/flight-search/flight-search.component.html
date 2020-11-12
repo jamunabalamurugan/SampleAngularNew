@@ -1,0 +1,51 @@
+<div *ngIf='searchlistobj.ProfileID == null'>
+    <app-home-nav></app-home-nav>
+  </div>
+  <div *ngIf='searchlistobj.ProfileID'>
+    <app-user-navigation></app-user-navigation>
+  </div>
+ <!-- <ng-template #other_content>other content here...</ng-template>  -->
+<img class="bg " [src]="photopath" alt="flight" width="100%" height="100%">
+<div class="container content" >
+    <div *ngIf="searchlistobj.searchlist; else noflight">  
+    <!-- <img class="bg " [src]="photopath" alt="flight" width="100%" height="100%"> -->
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Available Flights</h4>
+        </div>
+      </div> 
+    <div class="card" *ngFor="let ser of searchlistobj.searchlist">
+    <div class="card-body">
+        <table class="table table-hover table-responsive card-text">
+            <tr>
+                    <th>JourneyDate</th>
+                    <th>FlightNumber</th>
+                    <th>Source</th>
+                    <th>Destination</th>
+                    <th>Departure Time</th>
+                
+            </tr>
+            <tr>
+                <td>{{ser.JourneyDate| date:"MM/dd/yyyy"}}</td>
+                <td>{{ser.FlightNumber}}</td>
+                <td>{{ser.SourceLocation}}</td>
+                <td>{{ser.DestinationLocation}}</td>
+                <td>{{ser.DepartureTime| date:" h:mma"}}</td>
+            </tr>
+        </table>
+        <button type="button" class="btn btn-outline-success col-lg-2 col-md-2" (click)="OnSelect(ser.FlightNumber)">Select</button>
+    </div>
+  </div>
+</div>
+<ng-template #noflight>
+  <div class="card text col-md-7 col-sm-7 col-lg-7 col-xl-7">
+    <div class="card-body">
+        <h4 class="card-title">Sorry No Flights Are Available In this Route
+          <i class="fa fa-frown-o" aria-hidden="true"></i>
+        </h4>
+    </div>
+  </div> 
+</ng-template>
+</div>
+
+{{ser|json}}

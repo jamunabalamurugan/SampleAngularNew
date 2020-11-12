@@ -1,0 +1,16 @@
+<p>register-list works!</p>
+<table class="table table-hover">
+    <tr *ngFor="let reg of serve.list">
+      <td (click)=Populateform(reg)>[{{reg.ProfileId}}]-{{reg.FirstName}}</td>
+      <td (click)=Populateform(reg)>{{reg.Title}}</td>
+      <td (click)=Populateform(reg)>{{reg.LastName}}</td>
+      <td (click)=Populateform(reg)>{{reg.EmailId}}</td>
+      <td (click)=Populateform(reg)>{{reg.PWD}}</td>
+      <td (click)=Populateform(reg)>{{reg.DOB}}</td>
+      <td (click)=Populateform(reg)>{{reg. PhoneNumber}}</td>
+      <td (click)=Populateform(reg)>{{reg.securityquestion}}</td>
+      <td (click)=Populateform(reg)>{{reg.SecurityAns}}</td>
+      <td (click)=Populateform(reg)>{{reg.Age}}</td>
+      <td><button (click)="onDelete(reg.ProfileId)" class="btn btn-sm btn-outine-danger">X</button></tr>
+  </table>
+  {{reg|json}}

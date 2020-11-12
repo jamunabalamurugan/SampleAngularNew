@@ -1,0 +1,10 @@
+input.ng-touched.ng-invalid{
+    border-color: rgb(243, 12, 12);
+}
+
+div.validation-error{
+    width: 100%;
+    margin-top: .25rem;
+    font-size: 10px;
+    color: rgb(243, 12, 12);
+}

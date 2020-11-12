@@ -1,0 +1,73 @@
+<div *ngIf='details.ProfileID == null'>
+  <app-home-nav></app-home-nav>
+</div>
+<div *ngIf='details.ProfileID'>
+  <app-user-navigation></app-user-navigation>
+</div>
+<img class="bg " [src]="photopath" alt="flight" width="100%" height="100%">
+<div class="container varbooking">
+    <div class="card col-md-10 col-lg-10 col-sm-10 col-xl-10" style="margin-top: 0.5%;" >
+      <div class="card-body">
+      <h4>Select Class Type</h4><br>
+      <select  class="form-control col-md-4 col-lg-4 col-sm-4 col-xl-4" #ClassType required>
+        <option  selected disabled hidden>Select Class Type</option>
+        <option >Business</option>
+        <option >FirstClass</option>
+        <option >Economy</option>
+      </select>
+    </div>
+    <!-- <div class="col-md-5 col-lg-5 col-sm-5 col-xl-5">
+      <h4>Select No of Seats</h4><br>
+      <select  class="form-control col-md-4 col-lg-4 col-sm-4 col-xl-4" [(ngModel)]='NoOfSeats' required>
+        <option  selected disabled hidden>Select No of Seats</option>
+        <option >1</option>
+      </select>
+    </div> -->
+  </div>
+  <div class="card col-md-10 col-lg-10 col-sm-10 col-xl-10" style="margin-top: 0.5%;" >
+    <div class="card-body">
+      <h4 class="card-title">Passenger Details</h4>
+      <!-- class="was-validated" -->
+      <form >
+        <div class="form-group">
+          <input type="text" class="form-control" id="uname" placeholder="Enter Name" name="uname" [(ngModel)]='PassengerName'required>
+          <!-- <div class="valid-feedback">Valid.</div>
+          <div class="invalid-feedback">Please fill out this field.</div> -->
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-lg-6 col-sm-6 col-xl-6">
+                <label for="Gender">Gender</label><br>
+            <div class="form-check-inline">
+                <label class="form-check-label" for="radio1">
+                  <input type="radio" class="form-check-input" id="radio1" name="optradio" value="Male" [(ngModel)]='Gender'>Male
+                </label>
+              </div>
+              <div class="form-check-inline">
+                <label class="form-check-label" for="radio2">
+                  <input type="radio" class="form-check-input" id="radio2" name="optradio" value="Female" [(ngModel)]='Gender'>Female
+                </label>
+              </div>
+            </div>
+              <div class="form-group col-md-6 col-lg-6 col-sm-6 col-xl-6">
+                <input type="number" class="form-control" id="uname" placeholder="Enter Age" name="uname" [(ngModel)]='PassengerAge'>
+                <!-- <div class="valid-feedback">Valid.</div>
+                <div class="invalid-feedback">Please fill out this field.</div> -->
+              </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="card col-md-10 col-lg-10 col-sm-10 col-xl-10" style="margin-top: 0.5%;">
+    <div class="card-body">
+      <p class="terms">
+        By proceeding with this booking, I agree to Fast Airways 
+        <a routerLink='/termsandconditions'>Terms of Use</a> and
+        <a routerLink='home'>Privacy Policy</a>  &nbsp;&nbsp;&nbsp;   
+        <button type="button" class="btn btn-outline-success" (click)="OnPayment(ClassType,NoOfSeats,PassengerName,PassengerAge,Gender)" >Continue To Payment</button>
+        <!-- routerLink='/pricecheck' -->
+      </p>
+      
+    </div>
+  </div>
+</div>
+
